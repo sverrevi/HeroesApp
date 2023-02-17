@@ -22,6 +22,7 @@ namespace HeroesApp
 
         }
 
+        //The level up method
         public void LevelUp()
         {
             level += 1;
