@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace HeroesApp.Items
 {
-    public class Armor: Item
+    public enum WeaponType
     {
-        public HeroAttributes ArmorAttributes { get; set; }
-        public ArmorType ArmorTypeArmor { get; set; }
-
+        Axes,
+        Bows,
+        Daggers,
+        Hammers,
+        Staffs,
+        Swords,
+        Wands
     }
 }

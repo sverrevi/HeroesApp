@@ -4,14 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HeroesApp
+namespace HeroesApp.Items
 {
-    public class Weapon: Item
+    public class Weapon : Item
     {
-        public void some_method()
-        {
-            Console.WriteLine("Hello darkness");
-            Console.WriteLine(Id);
-        }
+        public int WeaponDamage { get; set; }
+        public WeaponType WeaponTypeWeapon { get; set; }
     }
 }

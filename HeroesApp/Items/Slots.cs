@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace HeroesApp.Items
 {
-    public class Armor: Item
+    public enum Slots
     {
-        public HeroAttributes ArmorAttributes { get; set; }
-        public ArmorType ArmorTypeArmor { get; set; }
-
+        Weapon,
+        Head,
+        Body,
+        Legs
     }
 }

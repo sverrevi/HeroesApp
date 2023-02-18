@@ -12,20 +12,14 @@ namespace HeroesApp.Heroes
         {
             LevelAttributes = new HeroAttributes(1, 1, 8);
             LevelUpAttributes = new HeroAttributes(1, 1, 5);
+            ValidWeaponTypes = new List<Items.WeaponType> { Items.WeaponType.Staffs, Items.WeaponType.Wands };
+            ValidArmorTypes = new List<Items.ArmorType> { Items.ArmorType.Cloth };
         }
-        
-        
-            
-        /*public EquipArmor()
+
+        public override double doDamage()
         {
-            //some code goes in here
+            return 2;
         }
-        
-        public EquipWeapons()
-        {
-            //some code goes in here
-        }
-        */
 
     }
 }
