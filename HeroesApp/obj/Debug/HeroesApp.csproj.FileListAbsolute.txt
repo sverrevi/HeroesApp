@@ -1,8 +1,0 @@
-C:\Users\SVinje\source\repos\HeroesApp\HeroesApp\bin\Debug\HeroesApp.exe.config
-C:\Users\SVinje\source\repos\HeroesApp\HeroesApp\bin\Debug\HeroesApp.exe
-C:\Users\SVinje\source\repos\HeroesApp\HeroesApp\bin\Debug\HeroesApp.pdb
-C:\Users\SVinje\source\repos\HeroesApp\HeroesApp\obj\Debug\HeroesApp.csproj.AssemblyReference.cache
-C:\Users\SVinje\source\repos\HeroesApp\HeroesApp\obj\Debug\HeroesApp.csproj.SuggestedBindingRedirects.cache
-C:\Users\SVinje\source\repos\HeroesApp\HeroesApp\obj\Debug\HeroesApp.csproj.CoreCompileInputs.cache
-C:\Users\SVinje\source\repos\HeroesApp\HeroesApp\obj\Debug\HeroesApp.exe
-C:\Users\SVinje\source\repos\HeroesApp\HeroesApp\obj\Debug\HeroesApp.pdb
