@@ -29,7 +29,7 @@ public class LevelAndAttributesTests
     }
     [Fact]
 
-    public void Constructor_Assigning_Initial_HerAttributes()
+    public void Constructor_Assigning_Initial_HeroAttributes()
     {
         string Name = "Ola Nordmann";
         Hero TestHero = new Warrior(Name);
