@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HeroesApp.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,15 +11,18 @@ namespace HeroesApp.Heroes
     {
         public Warrior(string Name) : base(Name)
         {
-            LevelAttributes = new HeroAttributes(1, 1, 8);
+            LevelAttributes = new HeroAttributes(5, 2, 1);
             LevelUpAttributes = new HeroAttributes(3, 2, 1);
+            ValidWeaponTypes = new List<WeaponType>  { WeaponType.Axes, WeaponType.Hammers, WeaponType.Swords };
         }
 
-        public List<String> validWeaponTypes;
+        
 
         public override double DoDamage()
         {
-            return 2;
+            Weapon Weapon = (Weapon)Equipment[Slot.Weapon];
+            double Damage = (Weapon != null) ? Weapon.WeaponDamage : 1;
+            return Damage * (1 + (double)TotalAttributes().Strength/(double)100);
         }
     }
 }

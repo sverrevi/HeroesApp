@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HeroesApp.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,9 @@ namespace HeroesApp.Heroes
 
         public override double DoDamage()
         {
-            return 2;
+            Weapon Weapon = (Weapon)Equipment[Slot.Weapon];
+            double Damage = (Weapon != null) ? Weapon.WeaponDamage : 1;
+            return Damage * (1 + (double)TotalAttributes().Dexterity / (double)100);
         }
     }
 }

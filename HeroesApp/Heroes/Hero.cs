@@ -33,7 +33,6 @@ namespace HeroesApp.Heroes
             ValidArmorTypes = new List<Items.ArmorType>();
         }
 
-        //The level up method
         public void LevelUp()
         {
             Level += 1;
@@ -42,24 +41,39 @@ namespace HeroesApp.Heroes
         }
 
         public HeroAttributes TotalAttributes()
-        { 
-            return LevelAttributes;
+        {
+            HeroAttributes TotalAttributes = LevelAttributes;
+
+            foreach(KeyValuePair<Slot, Item> equipment in Equipment)
+            {
+                if (equipment.Value is Armor)
+                {
+                    Armor armor = equipment.Value as Armor;
+                    TotalAttributes += armor.ArmorAttributes;
+                }
+                Armor Armor = equipment.Value as Armor;
+            }
+
+            TotalAttributes += new HeroAttributes(
+                (Level-1)*LevelUpAttributes.Strength, (Level-1)*LevelUpAttributes.Dexterity,
+            (Level-1)*LevelUpAttributes.Intelligence);
             
+            return TotalAttributes;
         }
 
-        //The doDamage method is overriden in children classes
+        //The DoDamage method is overriden in children classes
         public abstract double DoDamage();
         
         public void Equip(Weapon Weapon)
         {
             if (!ValidWeaponTypes.Contains(Weapon.WeaponType))
             {
-                throw new InvalidWeaponException($"{this.GetType().Name} can not equip INSERT WEAPON NAME L8R");
+                throw new InvalidWeaponException($"{this.GetType().Name} can not equip {Weapon.WeaponType}");
             }
 
             if (Weapon.RequiredLevel > Level)
             {
-                throw new InvalidWeaponException("Not high enough level");
+                throw new InvalidWeaponException($"Not high enough level. Your current level is {Level}, while the required level to equip {Weapon.Name} is {Weapon.RequiredLevel}");
             }
 
             Equipment[Slot.Weapon] = Weapon;
@@ -68,6 +82,20 @@ namespace HeroesApp.Heroes
         public void Equip(Armor Armor)
         {
             Equipment[Armor.Slot] = Armor;
+        }
+
+        public string Display()
+        {
+            StringBuilder StringBuild = new StringBuilder("\n");
+            StringBuild.Append("Name: " + Name + "\n");
+            StringBuild.Append("Class: " + GetType().ToString().Split('.').Last() + "\n");
+            StringBuild.Append("Level: " + Level + "\n");
+            StringBuild.Append("Strength: " + TotalAttributes().Strength + "\n");
+            StringBuild.Append("Dexterity: " + TotalAttributes().Dexterity + "\n");
+            StringBuild.Append("Intelligence: " + TotalAttributes().Intelligence + "\n");
+            StringBuild.Append("Damage: " + DoDamage() + "\n");
+
+            return StringBuild.ToString();
         }
     }
 }

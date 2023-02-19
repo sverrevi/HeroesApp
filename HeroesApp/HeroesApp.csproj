@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomExceptions\InvalidWeaponException.cs" />
-    <Compile Include="CustomExceptions\InvalidArmor.cs" />
+    <Compile Include="CustomExceptions\InvalidArmorException.cs" />
     <Compile Include="Heroes\Hero.cs" />
     <Compile Include="Heroes\HeroAttributes.cs" />
     <Compile Include="Heroes\Mage.cs" />
