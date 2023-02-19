@@ -8,13 +8,14 @@ namespace HeroesApp.Items
 {
     public abstract class Item
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public int RequiredLevel { get; set; }
-        public Slots Slot { get; set; }
-        
-        
+        public string Name { get; }
+        public int RequiredLevel { get; }
+        public Slot Slot { get; protected set; }
 
-        
+        public Item(string name, int requiredLevel)
+        {
+            Name = name;
+            RequiredLevel = requiredLevel;
+        }
     }
 }

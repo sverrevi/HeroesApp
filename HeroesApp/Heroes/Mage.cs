@@ -16,10 +16,11 @@ namespace HeroesApp.Heroes
             ValidArmorTypes = new List<Items.ArmorType> { Items.ArmorType.Cloth };
         }
 
-        public override double doDamage()
+        public override double DoDamage()
         {
             return 2;
         }
+
 
     }
 }

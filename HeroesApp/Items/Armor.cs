@@ -9,7 +9,17 @@ namespace HeroesApp.Items
     public class Armor: Item
     {
         public HeroAttributes ArmorAttributes { get; set; }
-        public ArmorType ArmorTypeArmor { get; set; }
+        public ArmorType ArmorType { get; set; }
 
+        public Armor(string name, int requiredLevel, Slot slot, ArmorType armorType, HeroAttributes armorAttributes) : base(name, requiredLevel)
+        {
+            if (slot == Slot.Weapon)
+            {
+                throw new InvalidArmorException("TODO");
+            }
+            ArmorAttributes = armorAttributes;
+            ArmorType = armorType;
+            Slot = slot;
+        }
     }
 }

@@ -5,18 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-public class InvalidWeapon : Exception
+public class InvalidWeaponException : Exception
 {
-    public InvalidWeapon()
+    public InvalidWeaponException()
     {
     }
 
-    public InvalidWeapon(string message)
+    public InvalidWeaponException(string message)
         : base(message)
     {
     }
 
-    public InvalidWeapon(string message, Exception inner)
+    public InvalidWeaponException(string message, Exception inner)
         : base(message, inner)
     {
     }

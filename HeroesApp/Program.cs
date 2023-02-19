@@ -8,26 +8,8 @@ namespace HeroesApp
     {
         static void Main(string[] args)
         {
-            
-
-            
-            
-            
-            Mage mage = new Mage("Hjalmar")
-            {
-                level= 1,
-            };
-
-            Console.WriteLine(mage.TotalAttributes().Strength);
-
-            Slots mySlot = Slots.Head;
-            Console.WriteLine(mySlot);
-
-
-
-
-
-
+            Weapon MyWeapon = new Weapon();
+            Console.WriteLine(MyWeapon);
         }
     }
 }

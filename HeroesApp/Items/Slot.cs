@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HeroesApp.Items
 {
-    public enum Slots
+    public enum Slot
     {
         Weapon,
         Head,

@@ -10,8 +10,8 @@ namespace HeroesApp.Heroes
     public abstract class Hero
     {
         public string Name { get; set; }
-        public int level;
-        public Dictionary <Slots, Item> Equipment { get; set; }
+        public int Level { get; set; }
+        public Dictionary <Slot, Item> Equipment { get; set; }
         public HeroAttributes LevelAttributes { get; set; }
         public HeroAttributes LevelUpAttributes { get; set; }
         public List<WeaponType> ValidWeaponTypes { get; set; }
@@ -21,24 +21,25 @@ namespace HeroesApp.Heroes
         protected Hero(string name)
         {
             Name = name;
-            level = 1;
-            Equipment = new Dictionary<Slots, Item> { 
-                [Slots.Weapon] = null, 
-                [Slots.Head] = null,
-                [Slots.Body] = null, 
-                [Slots.Legs] = null
+            Level = 1;
+            Equipment = new Dictionary<Slot, Item>
+            {
+                [Slot.Weapon] = null,
+                [Slot.Head] = null,
+                [Slot.Body] = null,
+                [Slot.Legs] = null
             };
-
+            ValidWeaponTypes = new List<Items.WeaponType>();
+            ValidArmorTypes = new List<Items.ArmorType>();
         }
 
         //The level up method
         public void LevelUp()
         {
-            level += 1;
+            Level += 1;
             LevelAttributes = LevelUpAttributes + LevelAttributes;
 
         }
-
 
         public HeroAttributes TotalAttributes()
         { 
@@ -46,23 +47,27 @@ namespace HeroesApp.Heroes
             
         }
 
-        public HeroAttributes EquipWeapon() 
-        {
-            return null;
-        }
-
-        public HeroAttributes EquipArmor()
-        {
-            return null;
-        }
-        public abstract double doDamage();
+        //The doDamage method is overriden in children classes
+        public abstract double DoDamage();
         
-        public void equipWeapon(Weapon weapon)
+        public void Equip(Weapon Weapon)
         {
-            Equipment [Slots.Weapon] = weapon;
+            if (!ValidWeaponTypes.Contains(Weapon.WeaponType))
+            {
+                throw new InvalidWeaponException($"{this.GetType().Name} can not equip INSERT WEAPON NAME L8R");
+            }
+
+            if (Weapon.RequiredLevel > Level)
+            {
+                throw new InvalidWeaponException("Not high enough level");
+            }
+
+            Equipment[Slot.Weapon] = Weapon;
         }
 
-
-
+        public void Equip(Armor Armor)
+        {
+            Equipment[Armor.Slot] = Armor;
+        }
     }
 }

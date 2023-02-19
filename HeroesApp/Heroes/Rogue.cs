@@ -15,5 +15,9 @@ namespace HeroesApp.Heroes
         }
 
         public List<String> validWeaponTypes;
+        public override double DoDamage()
+        {
+            return 2;
+        }
     }
 }
