@@ -11,7 +11,7 @@ namespace HeroesApp.Heroes
     {
         public Rogue(string Name) : base(Name)
         {
-            LevelAttributes = new HeroAttributes(1, 7, 1);
+            LevelAttributes = new HeroAttributes(2, 6, 1);
             LevelUpAttributes = new HeroAttributes(1, 4, 1);
         }
 
