@@ -8,13 +8,11 @@ namespace HeroesApp
     {
         static void Main(string[] args)
         {
-            Weapon MyWeapon = new Weapon("Common axe",1, Slot.Weapon, WeaponType.Axes, 1);
-            Armor MyArmor = new Armor("Common Plate Chest", 1, Slot.Body, ArmorType.Plate, new HeroAttributes(1, 0, 0));
-            Warrior MyWarrior = new Warrior("Kristian");
-            Console.WriteLine(MyWarrior.DoDamage());
-            MyWarrior.Equip(MyWeapon);
-            MyWarrior.Equip(MyArmor);
-            Console.WriteLine(MyWarrior.Display());
+            string Name = "Frodos silver thingy";
+            int RequiredLevel = 1;
+            ArmorType ArmorType = ArmorType.Plate;
+            HeroAttributes armorAttributes = new HeroAttributes(1, 2, 3);
+            Item TestArmor = new Armor(Name, RequiredLevel, Slot.Body, ArmorType, armorAttributes);
         }
     }
 }

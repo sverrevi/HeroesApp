@@ -81,6 +81,10 @@ namespace HeroesApp.Heroes
 
         public void Equip(Armor Armor)
         {
+            if (Armor.RequiredLevel > Level)
+            {
+                throw new InvalidArmorException($"Not high enough level. Your current level is {Level}, while the required level to equip {Armor.Name} is {Armor.RequiredLevel}");
+            }
             Equipment[Armor.Slot] = Armor;
         }
 
