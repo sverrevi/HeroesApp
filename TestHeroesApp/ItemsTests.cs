@@ -36,6 +36,18 @@ public class ItemsTests
         Assert.Equal(Expected, Actual);
     }
     [Fact]
+    public void Constructor_Assigning_Weapon_Damage()
+    {
+        string Name = "Gimlys Axe";
+        int RequiredLevel = 1;
+        WeaponType WeaponType = WeaponType.Axes;
+        int Damage = 1;
+        Weapon TestWeapon = new(Name, RequiredLevel, Slot.Weapon, WeaponType, Damage);
+        int Expected = Damage;
+        int Actual = TestWeapon.WeaponDamage;
+        Assert.Equal(Expected, Actual);
+    }
+    [Fact]
     public void Constructor_Assigning_Armor_Attributes()
     {
         string Name = "Frodos silver thingy";
@@ -47,6 +59,7 @@ public class ItemsTests
         HeroAttributes Actual = TestArmor.ArmorAttributes;
         Assert.Equal(Expected, Actual);
     }
+   
     [Fact]
     public void Constructor_Assigning_Armor_Required_Level()
     {
@@ -95,7 +108,21 @@ public class ItemsTests
         Assert.Throws<InvalidWeaponException>(() => TestHero.Equip(TestWeapon));
     }
     [Fact]
-    public void Custom_Exception_Appearing_When_Equipping_Weapon_Hero_Do_Not_Have_Access_To()
+    public void Custom_Exception_Appearing_When_Equipping_Armor_Hero_Does_Not_Have_Access_To()
+    {
+        string ArmorName = "Hylian shield from Zelda";
+        int RequiredLevel = 1;
+        ArmorType ArmorType = ArmorType.Plate;
+        HeroAttributes armorAttributes = new(1, 2, 3);
+        Armor TestArmor = new(ArmorName, RequiredLevel, Slot.Body, ArmorType, armorAttributes);
+        Hero TestHero = new Mage("Link");
+        Assert.Throws<InvalidArmorException>(() => TestHero.Equip(TestArmor));
+
+    }
+
+
+    [Fact]
+    public void Custom_Exception_Appearing_When_Equipping_A_Weapon_That_Hero_Does_Not_Have_Access_To()
     {
         string WeaponName = "Master Sword";
         int RequiredLevel = 1;

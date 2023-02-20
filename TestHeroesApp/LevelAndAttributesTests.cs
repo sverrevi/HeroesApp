@@ -100,5 +100,43 @@ public class LevelAndAttributesTests
         HeroAttributes Actual = TestHero.LevelAttributes;
         Assert.Equivalent(Expected, Actual);
     }
+    [Fact]
+    public void Evaluating_Total_Attributes_Inital_Without_Equipment()
+    {
+        string Name = "Ola Nordmann";
+        Hero TestHero = new Warrior(Name);
+        HeroAttributes Expected = new(5, 2, 1);
+        HeroAttributes Actual = TestHero.TotalAttributes();
+        Assert.Equivalent(Expected, Actual);
+    }
+    [Fact]
+    public void Evaluating_Total_Attributes_Inital_With_Equipment()
+    {
+        string Name = "Ola Nordmann";
+        Hero TestHero = new Warrior(Name);
+        HeroAttributes InitialValues = TestHero.TotalAttributes();
+        string ArmorName = "Hylian shield from Zelda";
+        int RequiredLevel = 1;
+        ArmorType ArmorType = ArmorType.Plate;
 
+        HeroAttributes armorAttributes = new(1, 2, 3);
+        Armor TestArmor = new(ArmorName, RequiredLevel, Slot.Body, ArmorType, armorAttributes);
+        
+        TestHero.Equip(TestArmor);
+        HeroAttributes Expected = InitialValues + armorAttributes;
+        HeroAttributes Actual = TestHero.TotalAttributes();
+        Assert.Equivalent(Expected, Actual);
+    }
+    [Fact]
+    public void Evaluating_Total_Attributes_After_Level_Up_Without_Equipment()
+    {
+        string Name = "Ola Nordmann";
+        Hero TestHero = new Warrior(Name);
+        HeroAttributes InitialValues = TestHero.TotalAttributes();
+        HeroAttributes LevelUpAttributes = TestHero.LevelUpAttributes;
+        TestHero.LevelUp();
+        HeroAttributes Expected = InitialValues + LevelUpAttributes;
+        HeroAttributes Actual = TestHero.TotalAttributes();
+        Assert.Equivalent(Expected, Actual);
+    }
 }

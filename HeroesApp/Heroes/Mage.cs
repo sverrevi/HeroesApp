@@ -10,8 +10,8 @@ namespace HeroesApp.Heroes
         {
             LevelAttributes = new HeroAttributes(1, 1, 8);
             LevelUpAttributes = new HeroAttributes(1, 1, 5);
-            ValidWeaponTypes = new List<Items.WeaponType> { Items.WeaponType.Staffs, Items.WeaponType.Wands };
-            ValidArmorTypes = new List<Items.ArmorType> { Items.ArmorType.Cloth };
+            ValidWeaponTypes = new List<WeaponType> { WeaponType.Staffs, WeaponType.Wands };
+            ValidArmorTypes = new List<ArmorType> { ArmorType.Cloth };
         }
 
         public override double DoDamage()

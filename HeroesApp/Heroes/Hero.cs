@@ -44,7 +44,7 @@ namespace HeroesApp.Heroes
         {
             HeroAttributes TotalAttributes = LevelAttributes;
 
-            foreach(KeyValuePair<Slot, Item> equipment in Equipment)
+            foreach (KeyValuePair<Slot, Item> equipment in Equipment)
             {
                 if (equipment.Value is Armor)
                 {
@@ -54,10 +54,6 @@ namespace HeroesApp.Heroes
                 Armor Armor = equipment.Value as Armor;
             }
 
-            TotalAttributes += new HeroAttributes(
-                (Level-1)*LevelUpAttributes.Strength, (Level-1)*LevelUpAttributes.Dexterity,
-            (Level-1)*LevelUpAttributes.Intelligence);
-            
             return TotalAttributes;
         }
 
@@ -81,6 +77,10 @@ namespace HeroesApp.Heroes
 
         public void Equip(Armor Armor)
         {
+            if (!ValidArmorTypes.Contains(Armor.ArmorType))
+            {
+                throw new InvalidArmorException($"{this.GetType().Name} can not equip {Armor.ArmorType}");
+            }
             if (Armor.RequiredLevel > Level)
             {
                 throw new InvalidArmorException($"Not high enough level. Your current level is {Level}, while the required level to equip {Armor.Name} is {Armor.RequiredLevel}");

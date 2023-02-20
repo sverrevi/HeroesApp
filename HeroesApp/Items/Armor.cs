@@ -15,7 +15,7 @@ namespace HeroesApp.Items
         {
             if (slot == Slot.Weapon)
             {
-                throw new InvalidArmorException("You can not equip this armor at your current level");
+                throw new InvalidArmorException("You can not equip armor at weapon slot");
             }
             ArmorAttributes = armorAttributes;
             ArmorType = armorType;

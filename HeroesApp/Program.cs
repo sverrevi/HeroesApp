@@ -8,11 +8,11 @@ namespace HeroesApp
     {
         static void Main(string[] args)
         {
-            string Name = "Frodos silver thingy";
-            int RequiredLevel = 1;
-            ArmorType ArmorType = ArmorType.Plate;
-            HeroAttributes armorAttributes = new HeroAttributes(1, 2, 3);
-            Item TestArmor = new Armor(Name, RequiredLevel, Slot.Body, ArmorType, armorAttributes);
+            string Name = "Ola Nordmann";
+            Hero TestHero = new Warrior(Name);
+            HeroAttributes InitialValues = TestHero.TotalAttributes();
+            TestHero.LevelUp();
+            HeroAttributes LeveledUp = TestHero.TotalAttributes();
         }
     }
 }

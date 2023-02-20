@@ -14,6 +14,7 @@ namespace HeroesApp.Heroes
             LevelAttributes = new HeroAttributes(5, 2, 1);
             LevelUpAttributes = new HeroAttributes(3, 2, 1);
             ValidWeaponTypes = new List<WeaponType>  { WeaponType.Axes, WeaponType.Hammers, WeaponType.Swords };
+            ValidArmorTypes = new List<ArmorType> { ArmorType.Mail, ArmorType.Plate };
         }
 
         
