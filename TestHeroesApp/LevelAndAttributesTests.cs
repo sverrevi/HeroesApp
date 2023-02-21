@@ -134,6 +134,26 @@ public class LevelAndAttributesTests
         Hero TestHero = new Warrior(Name);
         HeroAttributes InitialValues = TestHero.TotalAttributes();
         HeroAttributes LevelUpAttributes = TestHero.LevelUpAttributes;
+
+        string ArmorName = "Hylian shield from Zelda";
+        int RequiredLevel = 1;
+        ArmorType ArmorType = ArmorType.Plate;
+
+        HeroAttributes armorAttributes = new(1, 2, 3);
+        Armor TestArmor = new(ArmorName, RequiredLevel, Slot.Body, ArmorType, armorAttributes);
+        TestHero.Equip(TestArmor);
+        TestHero.LevelUp();
+        HeroAttributes Expected = InitialValues + LevelUpAttributes + armorAttributes;
+        HeroAttributes Actual = TestHero.TotalAttributes();
+        Assert.Equivalent(Expected, Actual);
+    }
+    [Fact]
+    public void Evaluating_Total_Attributes_After_Level_Up_With_Equipment()
+    {
+        string Name = "Ola Nordmann";
+        Hero TestHero = new Warrior(Name);
+        HeroAttributes InitialValues = TestHero.TotalAttributes();
+        HeroAttributes LevelUpAttributes = TestHero.LevelUpAttributes;
         TestHero.LevelUp();
         HeroAttributes Expected = InitialValues + LevelUpAttributes;
         HeroAttributes Actual = TestHero.TotalAttributes();

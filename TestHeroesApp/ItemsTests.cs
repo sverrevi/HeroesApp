@@ -132,4 +132,49 @@ public class ItemsTests
         Hero TestHero = new Mage("Link");
         Assert.Throws<InvalidWeaponException>(() => TestHero.Equip(TestWeapon));
     }
+
+    [Fact]
+    public void Total_Attributes_Calculated_Correctly_With_Two_Pieces_Of_Armor()
+    {
+        string ArmorName1 = "Kokiri Shield";
+        int RequiredLevel = 1;
+        ArmorType ArmorType1 = ArmorType.Plate;
+        HeroAttributes armorAttributes1 = new(1, 1, 1);
+        Armor TestArmor1 = new(ArmorName1, RequiredLevel, Slot.Body, ArmorType1, armorAttributes1);
+
+        string ArmorName2 = "Gorons Tunic";
+        ArmorType ArmorType2 = ArmorType.Mail;
+        HeroAttributes armorAttributes2 = new(1, 1, 1);
+        Armor TestArmor2 = new(ArmorName2, RequiredLevel, Slot.Legs, ArmorType2, armorAttributes2);
+
+        Hero TestHero = new Warrior("Link");
+        HeroAttributes InitialValues = TestHero.TotalAttributes();
+        TestHero.Equip(TestArmor1);
+        TestHero.Equip(TestArmor2);
+        HeroAttributes Expected = InitialValues + armorAttributes1 + armorAttributes2;
+        HeroAttributes Actual = TestHero.TotalAttributes();
+        Assert.Equivalent(Expected, Actual);
+    }
+    [Fact]
+    public void Total_Attributes_Calculated_Correctly_When_Armor_Is_Replaced_By_Equipping_On_Same_Slot_Twice()
+    {
+        string ArmorName1 = "Kokiri Shield";
+        int RequiredLevel = 1;
+        ArmorType ArmorType1 = ArmorType.Plate;
+        HeroAttributes armorAttributes1 = new(1, 1, 1);
+        Armor TestArmor1 = new(ArmorName1, RequiredLevel, Slot.Body, ArmorType1, armorAttributes1);
+
+        string ArmorName2 = "Hylian Shield";
+        ArmorType ArmorType2 = ArmorType.Plate;
+        HeroAttributes armorAttributes2 = new(2, 2, 2);
+        Armor TestArmor2 = new(ArmorName2, RequiredLevel, Slot.Body, ArmorType2, armorAttributes2);
+
+        Hero TestHero = new Warrior("Link");
+        HeroAttributes InitialValues = TestHero.TotalAttributes();
+        TestHero.Equip(TestArmor1);
+        TestHero.Equip(TestArmor2);
+        HeroAttributes Expected = InitialValues + armorAttributes2;
+        HeroAttributes Actual = TestHero.TotalAttributes();
+        Assert.Equivalent(Expected, Actual);
+    }
 }
