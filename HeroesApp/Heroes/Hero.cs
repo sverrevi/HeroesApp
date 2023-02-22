@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 
 namespace HeroesApp.Heroes
 {
+    /// <summary>
+    /// Parent class for each individual hero. In this class, the hero is created by passing in a name and specifying what hero type the
+    /// hero should be. Weapon and armor can be equipped later, they are set to null initially. The class methods include the equip method, which
+    /// equips the hero with either armor or weapon, the doDamage method, which evaluates how much damage a hero with set attributes does (depends on level and
+    /// equipped items), TotalAttributes, which evaluates the total attributes a hero has, a level up method, which levels up and increases
+    /// the hero's attribute), and finnaly a display method which displays the current stats of the hero.
+    /// </summary>
     public abstract class Hero
     {
         public string Name { get; set; }

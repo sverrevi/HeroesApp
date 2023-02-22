@@ -3,7 +3,11 @@ using System.Collections.Generic;
 
 
 namespace HeroesApp.Heroes
-{
+{    /// <summary>
+     /// The Mage class inherits from the hero class, uses the name when a hero is created and sets the individual attributes corresponding to the
+     /// mage hero type. The doDamage method included in this deals damage based upon the Mages attributes and overrides the method from the 
+     /// hero class. 
+     /// </summary>
     public class Mage: Hero
     {
         public Mage(string Name) : base(Name)

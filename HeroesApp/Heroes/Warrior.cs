@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace HeroesApp.Heroes
 {
+    /// <summary>
+    /// The Warrior class inherits from the hero class, uses the name when a hero is created and sets the individual attributes corresponding to the
+    /// warrior hero type. The doDamage method included in this deals damage based upon the warriors attributes and overrides the method from the 
+    /// hero class. 
+    /// </summary>
     public class Warrior: Hero
     {
         public Warrior(string Name) : base(Name)
