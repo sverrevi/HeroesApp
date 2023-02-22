@@ -5,7 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace HeroesApp
-{
+{/// <summary>
+/// The class sets the HeroAttributes, which are three inputs relating to what the particular hero is good at. These are measured in 
+/// integer values. The class also contains an overlading operator method which allows other parts of the code to add different 
+/// instances together such that the object attributes compounds on each other. 
+/// </summary>
     public class HeroAttributes
     {
         public int Strength { get; set; }
